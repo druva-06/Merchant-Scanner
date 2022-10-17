@@ -135,6 +135,7 @@ public class Register extends AppCompatActivity {
                         user.put("Full Name",getFullName);
                         user.put("Email",getEmailTxt);
                         user.put("Mobile Number",getMobile);
+                        user.put("Bottles",0);
                         documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
@@ -142,11 +143,13 @@ public class Register extends AppCompatActivity {
                             }
                         });
                         progressBar.setVisibility(View.GONE);
-                        Intent intent = new Intent(Register.this,HomeActivity.class);
+                        Intent intent = new Intent(Register.this,SubscriptionActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                     else{
                         Toast.makeText(Register.this,"Error ! "+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.GONE);
                     }
                 }
             });

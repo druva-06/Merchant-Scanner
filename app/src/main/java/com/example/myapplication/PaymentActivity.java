@@ -37,6 +37,7 @@ public class PaymentActivity extends AppCompatActivity {
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
 
+
         userId = fAuth.getCurrentUser().getUid();
 
         final Button paymentBtn = findViewById(R.id.paymentBtn);
@@ -50,7 +51,6 @@ public class PaymentActivity extends AppCompatActivity {
                         if(task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();;
                             if (document.exists()) {
-                                Log.d("Data123","DocumentSnapshot data: " + document.get("Bottles"));
                                 HashMap<String,Object> user = new HashMap<>();
                                 user.put("Full Name",document.get("Full Name"));
                                 user.put("Email",document.get("Email"));
